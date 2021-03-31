@@ -1,0 +1,25 @@
+{
+  "files": {
+    "main.css": "/react-house/static/css/main.540d893f.chunk.css",
+    "main.js": "/react-house/static/js/main.bd5ad961.chunk.js",
+    "main.js.map": "/react-house/static/js/main.bd5ad961.chunk.js.map",
+    "runtime-main.js": "/react-house/static/js/runtime-main.734312eb.js",
+    "runtime-main.js.map": "/react-house/static/js/runtime-main.734312eb.js.map",
+    "static/css/2.94a2217e.chunk.css": "/react-house/static/css/2.94a2217e.chunk.css",
+    "static/js/2.d6b5402b.chunk.js": "/react-house/static/js/2.d6b5402b.chunk.js",
+    "static/js/2.d6b5402b.chunk.js.map": "/react-house/static/js/2.d6b5402b.chunk.js.map",
+    "static/js/3.20de3c18.chunk.js": "/react-house/static/js/3.20de3c18.chunk.js",
+    "static/js/3.20de3c18.chunk.js.map": "/react-house/static/js/3.20de3c18.chunk.js.map",
+    "index.html": "/react-house/index.html",
+    "static/css/2.94a2217e.chunk.css.map": "/react-house/static/css/2.94a2217e.chunk.css.map",
+    "static/css/main.540d893f.chunk.css.map": "/react-house/static/css/main.540d893f.chunk.css.map",
+    "static/js/2.d6b5402b.chunk.js.LICENSE.txt": "/react-house/static/js/2.d6b5402b.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.734312eb.js",
+    "static/css/2.94a2217e.chunk.css",
+    "static/js/2.d6b5402b.chunk.js",
+    "static/css/main.540d893f.chunk.css",
+    "static/js/main.bd5ad961.chunk.js"
+  ]
+}
