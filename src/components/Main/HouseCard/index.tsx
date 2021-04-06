@@ -55,7 +55,7 @@ function HouseCard(props: House) {
         </Modal.Header>
         <Modal.Body>
           {showOnMap ? <Panel bordered bodyFill>
-            <MapModal />
+            <MapModal lng={props.lng} ltd={props.ltd}/>
           </Panel> : <Panel bordered shaded>
             <span>Description: {props.description}</span>
             <p>Added at {date.toLocaleString()}</p>

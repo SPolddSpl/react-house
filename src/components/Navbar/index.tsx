@@ -1,9 +1,11 @@
-import React from "react";
+import React, { useState } from "react";
 import { useRouteMatch, Link } from "react-router-dom";
 import { Nav, Avatar, Icon, Navbar, Dropdown } from "rsuite";
 
 function NavbarComp(props: any) {
   const { path, url } = useRouteMatch();
+
+  const [logged, setLogged] = useState(localStorage.getItem("logged"));
   return (
     <>
       <Navbar>
@@ -18,15 +20,37 @@ function NavbarComp(props: any) {
               Home
             </Nav.Item>
             <Nav.Item
-              eventKey="search"
+              eventKey="map"
               onSelect={props.activeKey}
               componentClass={Link}
-              to={`/search`}>
-              Search
+              to={`/map`}>
+              Map
             </Nav.Item>
+            {logged === "true" ? (
+              <Nav.Item
+                eventKey="addHouse"
+                onSelect={props.activeKey}
+                componentClass={Link}
+                to={`/add`}>
+                Add
+              </Nav.Item>
+            ) : (
+              ""
+            )}
           </Nav>
           <Nav pullRight appearance="default">
-            <Nav.Item icon={<Icon icon="unlock-alt" />}>Login</Nav.Item>
+            <Nav.Item
+              componentClass={Link}
+              to={"/login"}
+              icon={
+                logged === "true" ? (
+                  <Icon icon="lock" />
+                ) : (
+                  <Icon icon="unlock-alt" />
+                )
+              }>
+              {logged === "true" ? "Logout" : "Login"}
+            </Nav.Item>
           </Nav>
         </Navbar.Body>
       </Navbar>
