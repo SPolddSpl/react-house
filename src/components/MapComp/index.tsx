@@ -6,28 +6,34 @@ import MapService from "../../services/map-service";
 import PlacemarkComp from "./PlacemarkComp";
 import "./index.css";
 
-const mapState = { center: [56.848217, 53.236675], zoom: 9 };
 
 function MapComp(props: any) {
+  const mapState = { center: props.center ? props.center : [42.87550064374248, 74.61705246674954], zoom: 15 };
   const mapService = new MapService();
   const houseService = new HouseService();
   const [mapEvents, setMapEvents] = useState(props.mapEvents);
   const [placemark, setPlacemark] = useState<PlacemarkProps[]>([]);
-  useEffect(() => {}, [placemark]);
+  const [singlePlaceMark, setSinglePlacemark] = useState<PlacemarkProps>();
+
+  useEffect(() => { }, [placemark]);
 
   useEffect(() => {
-    houseService.getHouses().then((data) => {
-      let tempArr: PlacemarkProps[] = [];
-      data.map((item) => {
-        tempArr.push({
-          coordinates: [Number(item.lng), Number(item.ltd)],
-          content: item.description,
-          header: item.title,
-          footer: `Price: $${item.price}`,
+    if (props.house) {
+      setSinglePlacemark(props.house);
+    } else {
+      houseService.getHouses().then((data) => {
+        let tempArr: PlacemarkProps[] = [];
+        data.map((item) => {
+          tempArr.push({
+            coordinates: [Number(item.ltd), Number(item.lng)],
+            content: item.description,
+            header: item.title,
+            footer: `Price: $${item.price}`,
+          });
         });
+        setPlacemark(tempArr);
       });
-      setPlacemark(tempArr);
-    });
+    }
   }, []);
 
   return (
@@ -49,10 +55,10 @@ function MapComp(props: any) {
         }}>
         {placemark.length
           ? placemark.map((item, i) => {
-              return <PlacemarkComp key={i} {...item} />;
-            })
+            return <PlacemarkComp key={i} {...item} />;
+          })
           : ""}
-        {placemark.length ? <PlacemarkComp {...placemark[0]} /> : ""}
+        {singlePlaceMark ? <PlacemarkComp {...singlePlaceMark} /> : ""}
       </Map>
     </YMaps>
   );

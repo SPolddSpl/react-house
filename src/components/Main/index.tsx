@@ -13,6 +13,7 @@ function Main() {
   
   useEffect(() => {
     houseService.getHouses().then((data: House[]) => {
+      data = data.sort();
       setHouseList(data);
     });
   }, []);

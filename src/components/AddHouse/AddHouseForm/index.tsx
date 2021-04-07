@@ -31,12 +31,19 @@ class AddHouseForm extends React.Component<IAddHouseForm, AddHouseFormState> {
     this.state = {
       title: "",
       price: 0,
-      ltd: 0,
-      lng: 0,
-      city: "",
-      country: "",
-      description: "",
+      ltd: this.props.house.ltd,
+      lng: this.props.house.lng,
+      city: this.props.house.city,
+      country: this.props.house.country,
+      description: this.props.house.description,
     };
+    this.submitForm = this.submitForm.bind(this);
+  }
+
+  submitForm() {
+    let house = { ...this.state }
+    console.log(house)
+    this.props.submit(house);
   }
 
   render() {
@@ -134,11 +141,7 @@ class AddHouseForm extends React.Component<IAddHouseForm, AddHouseFormState> {
         <FormGroup>
           <ButtonToolbar>
             <Button
-              onClick={(e) => {
-                e.preventDefault();
-                let house = {...this.state}
-                this.props.submit(house);
-              }}
+              onClick={this.submitForm}
               type="submit"
               appearance="primary">
               Submit
